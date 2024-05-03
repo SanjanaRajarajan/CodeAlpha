@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  
+  font-family: Arial;
+}
+.row{
+    display: flex;
+}
+
+
+/* Style the images inside the grid */
+.column img {
+  cursor: pointer; 
+  width: 330px;
+  height: 230px;
+  padding-right: 2px;
+  margin-left: 2px;
+  margin-right: 2px;
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+.column img:hover {
+  opacity: 1;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.container {
+  position: fixed; /* Changed to fixed position */
+  z-index: 1;
+  padding-top: 19px;
+  padding-bottom: 1px; /* Adjusted padding */
+  left: 0;
+  top: 0;
+  width: 1350px;
+  height: 900px;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.9);
+  overflow: auto;
+  display: none;
+}
+
+.container img {
+  margin: auto;
+  display: block;
+  width: 90%; /* Adjusted image width */
+  max-width: 900px; /* Max width of expanded image */
+  height: auto;
+  image-resolution: from-image;
+image-resolution: 300dpi;
+image-resolution: from-image 300dpi;
+image-resolution: 300dpi snap;
+image-resolution: inherit;
+image-resolution: initial;
+image-resolution: revert;
+image-resolution: revert-layer;
+image-resolution: unset;
+}
+
+.closebtn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+}
+#expandedImg{
+    width: 1330px;
+    height: 600px;
+}
+</style>
+</head>
+<body>
+
+<div style="text-align:center">
+  <h2>Tabbed Image Gallery</h2>
+  <p>Click on the images below:</p>
+</div>
+<div class="row">
+  <div class="column"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzJDx2rgz5O2J26_fzWpRxRIHyKbg_uOfsUQ&s" onclick="myFunction(this);"></div>
+  <div class="column"><img src="https://www.shutterstock.com/image-photo/portrait-children-friends-hugging-park-600nw-2281563737.jpg" onclick="myFunction(this);"></div>
+  <div class="column"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt81rJxYrf_mZ6RNpEcuws1tT46K8ODji26w&s" onclick="myFunction(this);"></div>
+  <div class="column"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTdFkM6p-e_uUVCeo1D5dUOpUdksnqK5StvA&s" onclick="myFunction(this);"></div>
+</div>
+<div class="row">
+    <div class="column"><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRPXLxdETUvSjwHz-p5hNLQlbvwrcy9j2EjVqpXzUh61MaJRFPv" onclick="myFunction(this);"></div>
+    <div class="column"><img src="https://bianys.org/wp-content/uploads/2015/04/10250137-Portrait-of-happy-family-smiling-Stock-Photo-free.jpg" onclick="myFunction(this);"></div>
+    <div class="column"><img src="data:image/jpeg;base64,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" onclick="myFunction(this);"></div>
+    <div class="column"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSic3zn3bCU6WtxWNdCQWx6OyC0yUaSsSqwwA&s" onclick="myFunction(this);"></div>
+</div>
+<div class="row">
+    <div class="column"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd58judYx225Niz5uRBaJc1UJi4DFHjOZNJA&s" onclick="myFunction(this);"></div>
+    <div class="column"><img src="https://www.w3schools.com/howto/img_lights.jpg" onclick="myFunction(this);"></div>
+    <div class="column"><img src="https://i.pinimg.com/564x/55/a6/b5/55a6b5a067633106b9ceee27f9241a08.jpg" onclick="myFunction(this);"></div>
+    <div class="column"><img src="https://images.unsplash.com/photo-1630825855018-f52d1c0f1c97?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Nnx8fGVufDB8fHx8fA%3D%3D" onclick="myFunction(this);"></div>
+</div>
+<div class="row">
+    <div class="column"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyUA55FWQuf0MDoho8EkZXsyaH1wdye9S-2SmAxV1SHSiMEQMK7kiUcYgjTWf78iZSE28&usqp=CAU" onclick="myFunction(this);"></div>
+    <div class="column"><img src="https://theartofcharm.com/wp-content/uploads/2013/06/Female-Psychology-of-Love.jpg" onclick="myFunction(this);"></div>
+    <div class="column"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd1N-iUXbGwWQdeGxDtRqH8x5-1JBuSCjJ2ex_6b_NuwdtMRjhryOAXKELlPIQCZKvcco&usqp=CAU" onclick="myFunction(this);"></div>
+    <div class="column"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR57DRYQnOwnvpYYewAq3UEWVfS0dVRSNbNq06tT1i6oQXqY6i2wpBwP0kNP7jzzCfIgVg&usqp=CAU" onclick="myFunction(this);"></div>
+</div>
+<div class="container">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <img id="expandedImg"  >
+</div>
+<script>
+function myFunction(imgs) {
+  var expandImg = document.getElementById("expandedImg");
+  expandImg.src = imgs.src;
+  expandImg.parentElement.style.display = "block";
+}
+</script>
+
+</body>
+</html>
